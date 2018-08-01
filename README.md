@@ -1,6 +1,6 @@
 # Distribuidos
 Intregrantes:
 -------------
-+Ahtty
-+León
-+Massón
++ Ahtty
++ León
++ Massón
