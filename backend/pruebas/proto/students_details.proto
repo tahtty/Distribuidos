@@ -1,0 +1,16 @@
+# proto/students_details.proto&amp;amp;amp;amp;lt;/span&amp;amp;amp;amp;gt;
+
+syntax = 'proto3';
+package students_details;
+
+service StudentsDetailsService {
+rpc Hello( HelloRequest ) returns ( HelloResponse ) {}
+}
+
+message HelloRequest {
+string name = 1;
+}
+
+message HelloResponse {
+string body = 1;
+}
