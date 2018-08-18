@@ -7,7 +7,7 @@ require './lib/protos/students_details_services_pb'
 require './config/initializers'
 require './app'
 
-class StudentsDetailsService &amp;amp;amp;amp;lt; StudentsDetails::StudentsDetailsService::Service
+class ImageDetailsService < Images::ImageDetailsService::Service
     def hello(request, _unused_call)
         HelloController.say_hello(request)
     end
