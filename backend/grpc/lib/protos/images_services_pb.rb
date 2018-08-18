@@ -2,7 +2,7 @@
 # Source: images.proto for package 'images'
 
 require 'grpc'
-require 'images_pb'
+require_relative 'images_pb'
 
 module Images
   module ImageDetailsService
