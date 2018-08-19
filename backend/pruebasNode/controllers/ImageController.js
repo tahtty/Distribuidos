@@ -16,16 +16,13 @@ module.exports = {
               devolver.descripcion = elemento.descripcion;
               devolver.cantidad_vistas = elemento.accesos;
               devolver.imagen = Buffer.from(elemento.imagen).toString('base64')
-              // devolver.imagen = elemento.imagen;
               return devolver;
             }
         );
 
         res.json(objeto_imagen);
-        // res.json(response);
 
       });
-      // res.json({"img":"top10"});
     },
     hello:function(req,res) {
       let nombre = req.query.name;
