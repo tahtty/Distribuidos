@@ -6,6 +6,6 @@ stub = Images::ImageDetailsService::Stub.new(
  '192.168.1.101:50052', :this_channel_is_insecure
 )
 
-request = Images::HelloRequest.new(name: "Harry")
+request = Images::Empty.new();
 response = stub.hello(request)
 puts response.body

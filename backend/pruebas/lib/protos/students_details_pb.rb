@@ -4,6 +4,8 @@
 require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
+  add_message "images.Empty" do
+  end
   add_message "images.HelloRequest" do
     optional :name, :string, 1
   end
@@ -13,6 +15,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module Images
+  Empty = Google::Protobuf::DescriptorPool.generated_pool.lookup("images.Empty").msgclass
   HelloRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("images.HelloRequest").msgclass
   HelloResponse = Google::Protobuf::DescriptorPool.generated_pool.lookup("images.HelloResponse").msgclass
 end

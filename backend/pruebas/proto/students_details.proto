@@ -2,9 +2,9 @@ syntax = 'proto3';
 package images;
 
 service ImageDetailsService {
-  rpc Hello( HelloRequest ) returns ( HelloResponse ) {}
+  rpc Hello( Empty ) returns ( HelloResponse ) {}
 }
-
+message Empty{}
 message HelloRequest {
   string name = 1;
 }

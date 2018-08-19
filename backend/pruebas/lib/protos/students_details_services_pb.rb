@@ -14,7 +14,7 @@ module Images
       self.unmarshal_class_method = :decode
       self.service_name = 'images.ImageDetailsService'
 
-      rpc :Hello, HelloRequest, HelloResponse
+      rpc :Hello, Empty, HelloResponse
     end
 
     Stub = Service.rpc_stub_class
