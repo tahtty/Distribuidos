@@ -1,7 +1,16 @@
 # frozen_string_literal: true
+
 source 'https://rubygems.org'
+
+gem 'mysql2'
+gem 'activerecord', :require=>"active_record"
+gem 'daemons'
+gem 'delayed_job_active_record'
+gem 'dotenv'
 gem 'grpc'
-gem 'grpc-tools'
-gem 'pry'
-gem 'google-protobuf'
 gem 'logging'
+gem 'grpc-tools'
+gem 'paper_trail'
+gem 'pry'
+gem 'rake'
+gem 'rspec'

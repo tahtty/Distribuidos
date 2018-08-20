@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'bundler/setup'
 require_relative 'lib/images_service'
+
 require 'logging'
- 
 Bundler.require(:default)
  
 module GRPC
