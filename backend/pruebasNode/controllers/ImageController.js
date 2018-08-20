@@ -7,9 +7,17 @@ module.exports = {
       // var hello_proto = grpc.load(PROTO_PATH).helloworld();
       grpcClient.mejoresImagenes({}, function(err, response) {
 
-        if(err) res.json({'codigo':err.code,'details':err.details});
+        if(err) {
+          res.json({'codigo':err.code,'details':err.details});
+          return
+        };
         // response = [{descripcion:"",accesos:"",imagen:""}]
-        console.log(response);
+
+        if(response == undefined) {
+          res.json({'mensaje':'Sin respuesta del servidor'});
+          return
+        }
+
         let objeto_imagen = response.images.map(
             (elemento)=>{
               let devolver = {};
@@ -19,7 +27,8 @@ module.exports = {
               return devolver;
             }
         );
-
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json(objeto_imagen);
 
       });
