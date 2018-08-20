@@ -1,0 +1,27 @@
+syntax = "proto3";
+package images;
+
+service ImageDetailsService {
+    rpc Hello( Empty ) returns ( HelloResponse ) {}
+    rpc MejoresImagenes ( Empty ) returns ( Images ) {}
+}
+
+message Empty {}
+
+message HelloRequest {
+    string name = 1;
+}
+ 
+message HelloResponse {
+    string body = 1;
+}
+
+message Images {
+    repeated Image images = 1;
+}
+   
+message Image {
+    string descripcion = 1;
+    int64 accesos = 2;
+    bytes imagen = 3;
+}
