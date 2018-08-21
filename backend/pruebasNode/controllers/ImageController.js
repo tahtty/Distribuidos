@@ -23,7 +23,8 @@ module.exports = {
               let devolver = {};
               devolver.descripcion = elemento.descripcion;
               devolver.cantidad_vistas = elemento.accesos;
-              devolver.imagen = Buffer.from(elemento.imagen).toString('base64')
+              //devolver.imagen = Buffer.from(elemento.imagen).toString('base64')
+              devolver.imagen = elemento.imagen;
               return devolver;
             }
         );

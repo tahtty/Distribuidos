@@ -11,18 +11,19 @@ class ImageController
         contador = redis.llen(fecha)
         if (contador == 0)
             puts "no-cache"
-            images1 = ImagesModel.order("num_acceso desc").limit(3)
+            images1 = ImagesModel.order("num_acceso desc").limit(10)
             puts images1.to_sql
             images2 = []
             images1.map { |item|
             # do whatever
                 obj = Hash.new
                 
-                open(item.url, "rb") do |read_file|
-                    image = read_file.read
-                    obj['imagen'] = Base64.encode64( image )
+                #open(item.url, "rb") do |read_file|
+                    #image = read_file.read
+                    #obj['imagen'] = Base64.encode64( image )
                     #obj['imagen'] =  image
-                end
+                #end
+                obj['imagen'] =  item.url
                 # puts item.num_acceso
                  #puts obj['imagen']
                 obj['descripcion'] = item.descripcion
@@ -31,6 +32,7 @@ class ImageController
             }
             redis.lpush(fecha,images2)
             redis.expire(fecha,86400)
+            redis.quit()
             BuildGrpcObjects.convert_images_to_grpc_obj(images2)
             #https://redis.io/topics/data-types-intro
         else
@@ -60,6 +62,7 @@ class ImageController
                 # obj['accesos'] = item.num_acceso
                 imagesR2.unshift(obj)
             }
+            redis.quit()
             BuildGrpcObjects.convert_images_to_grpc_obj(imagesR2)
         end
         

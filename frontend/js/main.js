@@ -8,7 +8,7 @@ var cargarImagenes = () => {
         "top": 5
     }
 
-    $.getJSON("json/data.json", data,
+    $.getJSON("./imageController.php", data,
         function (response, textStatus, jqXHR) {
             var $TOP = $("#top-imagenes");
             $.each(response, function (i, imagen) {
@@ -32,14 +32,14 @@ var cargarCarta = (imagen) => {
     
     var $CARD_IMG = $('<img/>');
     $CARD_IMG.addClass('card-img-top');
-    $CARD_IMG.attr("src","data:image/;base64," + imagen.imagen);
-
+    //$CARD_IMG.attr("src","data:image/;base64," + imagen.imagen);
+    $CARD_IMG.attr("src", imagen.imagen);
     var $CARD_BODY = $('<div></div>');
     $CARD_BODY.addClass('card-body');
     
     var $CARD_TITLE = $('<h4></h4>');
     $CARD_TITLE.addClass('card-title');
-    $CARD_TITLE.append(imagen.votos + " voto(s)");
+    $CARD_TITLE.append(imagen.cantidad_vistas + " voto(s)");
 
     var $CARD_TEXT = $('<p></p>');
     $CARD_TEXT.addClass('card-text');

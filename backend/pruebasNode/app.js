@@ -27,7 +27,7 @@ var corsOptions = {
 //here is the magic
 
 //app.use(cors(corsOptions)); //se quito esto 27 de Abril
-app.options('*',cors()); // se puso esto 27 de Abril
+//app.options('*',cors()); // se puso esto 27 de Abril
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
