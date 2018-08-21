@@ -18,7 +18,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_message "images.Image" do
     optional :descripcion, :string, 1
     optional :accesos, :int64, 2
-    optional :imagen, :bytes, 3
+    optional :imagen, :string, 3
   end
 end
 

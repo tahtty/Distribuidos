@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'base64'
 require 'json'
+require "base64"
 class ImageController
     def self.get_top(request)
         fecha = Time.now.strftime("%Y-%m-%d:%H:%M")
@@ -19,9 +20,11 @@ class ImageController
                 
                 open(item.url, "rb") do |read_file|
                     image = read_file.read
-                    obj['imagen'] = image 
+                    obj['imagen'] = Base64.encode64( image )
+                    #obj['imagen'] =  image
                 end
-                puts item.num_acceso
+                # puts item.num_acceso
+                 #puts obj['imagen']
                 obj['descripcion'] = item.descripcion
                 obj['accesos'] = item.num_acceso
                 images2 << obj
@@ -41,9 +44,11 @@ class ImageController
             # do whatever
                 # puts item[-30..-1]
                 obj = JSON.parse item.gsub('=>', ':')
-                puts obj['accesos']
+                # puts obj['accesos']
                 # puts obj['descripcion']
-                # puts obj['imagen']
+                
+                # obj['imagen'] = obj['imagen'].force_encoding(Encoding::ASCII_8BIT)
+                #puts obj['imagen']
                 # obj = Hash.new
                 # puts item
                 # open(item.url, "rb") do |read_file|
