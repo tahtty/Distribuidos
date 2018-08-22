@@ -2,13 +2,15 @@ require 'open-uri'
 require 'base64'
 require 'json'
 require "base64"
+require "./server"
 class ImageController
     def self.get_top(request)
         fecha = Time.now.strftime("%Y-%m-%d:%H:%M")
         puts fecha
-        redis = Redis.new
+        #redis = Redis.new
         #redis.set("foo","check")
-        contador = redis.llen(fecha)
+
+        contador = ImagesServer.cache.llen(fecha)
         if (contador == 0)
             puts "no-cache"
             images1 = ImagesModel.order("num_acceso desc").limit(10)
@@ -30,16 +32,16 @@ class ImageController
                 obj['accesos'] = item.num_acceso
                 images2 << obj
             }
-            redis.lpush(fecha,images2)
-            redis.expire(fecha,86400)
-            redis.quit()
+            ImagesServer.cache.lpush(fecha,images2)
+            ImagesServer.cache.expire(fecha,86400)
+            
             BuildGrpcObjects.convert_images_to_grpc_obj(images2)
             #https://redis.io/topics/data-types-intro
         else
             puts "cache"
             #imagesRE = JSON.parse(imagesR)
             #puts imagesR
-            imagesR = redis.lrange(fecha,0,10)
+            imagesR = ImagesServer.cache.lrange(fecha,0,10)
             # puts imagesR
             imagesR2 = []
             imagesR.map { |item|
@@ -62,7 +64,6 @@ class ImageController
                 # obj['accesos'] = item.num_acceso
                 imagesR2.unshift(obj)
             }
-            redis.quit()
             BuildGrpcObjects.convert_images_to_grpc_obj(imagesR2)
         end
         
