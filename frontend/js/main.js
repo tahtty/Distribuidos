@@ -1,14 +1,14 @@
 $(document).ready(function () {
     cargarImagenes();
     
-    $("#opcion-cache").on('change', cargarImagenes);
+    $("#opcion-cache, #opcion-top").on('change', cargarImagenes);
 });
 
 var cargarImagenes = () => {
 
     var data = {
         "noCache": parseInt($("#opcion-cache").val()),
-        "top": 1
+        "top": parseInt($("#opcion-top").val())
     }
     
     var $TOP = $("#top-imagenes");

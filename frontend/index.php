@@ -57,7 +57,15 @@
             </select>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="form-group">
+            <select name="" id="opcion-top" class="form-control">
+              <option value="10">Top 10</option>
+              <option value="20">Top 20</option>
+              <option value="50">Top 50</option>
+            </select>
+          </div>
+        </div>
       </div>
       
       <!-- Page Features -->

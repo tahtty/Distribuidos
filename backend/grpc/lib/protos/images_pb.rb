@@ -8,6 +8,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
   add_message "images.ImgRequest" do
     optional :noCache, :int64, 1
+    optional :top, :int64, 2
   end
   add_message "images.HelloRequest" do
     optional :name, :string, 1

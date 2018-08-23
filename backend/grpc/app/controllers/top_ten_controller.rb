@@ -6,7 +6,8 @@ require "./server"
 class ImageController
     def self.get_top(request)
         noCache = request.noCache
-        fecha = Time.now.strftime("%Y-%m-%d")
+        top = request.top
+        fecha = Time.now.strftime("%Y-%m-%d") + ":#{top}"
         puts fecha
         #redis = Redis.new
         #redis.set("foo","check")
@@ -15,7 +16,7 @@ class ImageController
         puts contador
         if (contador == 0 || noCache == 1)
             puts "no-cache"
-            images1 = ImagesModel.distinct.order("num_acceso desc").limit(10)
+            images1 = ImagesModel.distinct.order("num_acceso desc").limit(top)
             puts images1.to_sql
             images2 = []
             images1.map { |item|
@@ -43,7 +44,7 @@ class ImageController
             puts "cache"
             #imagesRE = JSON.parse(imagesR)
             #puts imagesR
-            imagesR = ImagesServer.cache.lrange(fecha,0,9)
+            imagesR = ImagesServer.cache.lrange(fecha,0,top - 1)
             # puts imagesR
             imagesR2 = []
             imagesR.map { |item|
