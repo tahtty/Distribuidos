@@ -5,7 +5,10 @@ module.exports = {
 
     mejores:function(req,res) {
       // var hello_proto = grpc.load(PROTO_PATH).helloworld();
-      grpcClient.mejoresImagenes({}, function(err, response) {
+      var noCache = req.params.noCache;
+      console.log(noCache);
+      console.log(1);
+      grpcClient.mejoresImagenes({noCache: noCache}, function(err, response) {
 
         if(err) {
           res.json({'codigo':err.code,'details':err.details});

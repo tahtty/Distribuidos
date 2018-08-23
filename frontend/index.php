@@ -44,11 +44,22 @@
 
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
-        <h1 class="display-3">A Warm Welcome!</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+        <h1 class="display-3">¡Bienvenido!</h1>
+        <p class="lead">Revisa el top de imágenes con más visitas existentes en nuestro registro</p>
       </header>
-
+      
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="form-group">
+            <select name="" id="opcion-cache" class="form-control">
+              <option value="1">Sin Caché</option>
+              <option value="0">Con Caché</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"></div>
+      </div>
+      
       <!-- Page Features -->
       <div id="top-imagenes" class="row text-center"></div>
       <!-- /.row -->
@@ -59,7 +70,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white">Copyright &copy; ESPOL - Sistemas Distribuidos 2018 - I</p>
       </div>
       <!-- /.container -->
     </footer>

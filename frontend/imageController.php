@@ -5,12 +5,11 @@
 
 	$apiCall = new Curl();
 
+	$noCache = $_GET['noCache'];
 	$top = $_GET["top"];
 
-	$url = "http://ec2-18-221-115-67.us-east-2.compute.amazonaws.com:3100/images/mejores?top=".$top;
+	$url = "http://ec2-18-221-115-67.us-east-2.compute.amazonaws.com:3100/images/mejores/$noCache";
 	
-
-
 	//$json = $apiCall->send($url,"GET",null);
 	$json = file_get_contents($url);
 

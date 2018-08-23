@@ -15,7 +15,7 @@ module Images
       self.service_name = 'images.ImageDetailsService'
 
       rpc :Hello, Empty, HelloResponse
-      rpc :MejoresImagenes, Empty, Images
+      rpc :MejoresImagenes, ImgRequest, Images
     end
 
     Stub = Service.rpc_stub_class

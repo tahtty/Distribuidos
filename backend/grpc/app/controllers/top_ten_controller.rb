@@ -5,15 +5,17 @@ require "base64"
 require "./server"
 class ImageController
     def self.get_top(request)
-        fecha = Time.now.strftime("%Y-%m-%d:%H:%M")
+        noCache = request.noCache
+        fecha = Time.now.strftime("%Y-%m-%d")
         puts fecha
         #redis = Redis.new
         #redis.set("foo","check")
 
         contador = ImagesServer.cache.llen(fecha)
-        if (contador == 0)
+        puts contador
+        if (contador == 0 || noCache == 1)
             puts "no-cache"
-            images1 = ImagesModel.order("num_acceso desc").limit(10)
+            images1 = ImagesModel.distinct.order("num_acceso desc").limit(10)
             puts images1.to_sql
             images2 = []
             images1.map { |item|
@@ -41,7 +43,7 @@ class ImageController
             puts "cache"
             #imagesRE = JSON.parse(imagesR)
             #puts imagesR
-            imagesR = ImagesServer.cache.lrange(fecha,0,10)
+            imagesR = ImagesServer.cache.lrange(fecha,0,9)
             # puts imagesR
             imagesR2 = []
             imagesR.map { |item|

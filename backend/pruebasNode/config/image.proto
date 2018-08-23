@@ -3,10 +3,14 @@ package images;
 
 service ImageDetailsService {
     rpc Hello( Empty ) returns ( HelloResponse ) {}
-    rpc MejoresImagenes ( Empty ) returns ( Images ) {}
+    rpc MejoresImagenes ( ImgRequest ) returns ( Images ) {}
 }
 
 message Empty {}
+
+message ImgRequest {
+    int64 noCache = 1;
+}
 
 message HelloRequest {
     string name = 1;
