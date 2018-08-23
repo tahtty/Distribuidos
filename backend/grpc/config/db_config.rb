@@ -4,9 +4,9 @@ class DbConfig
       adapter: 'mysql2',
       host: 'localhost',
       username: 'root',
-      password: 'xxxxx',
+      password: 'xxxxxx',
       database: 'images',
-      pool: 5,
+      pool: 100,
       timeout: 5000,
       reconnect: true
     }

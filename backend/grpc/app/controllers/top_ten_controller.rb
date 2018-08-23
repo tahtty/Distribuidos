@@ -13,7 +13,6 @@ class ImageController
         #redis.set("foo","check")
 
         contador = ImagesServer.cache.llen(fecha)
-        puts contador
         if (contador == 0 || noCache == 1)
             puts "no-cache"
             images1 = ImagesModel.distinct.order("num_acceso desc").limit(top)
@@ -35,8 +34,10 @@ class ImageController
                 obj['accesos'] = item.num_acceso
                 images2 << obj
             }
-            ImagesServer.cache.lpush(fecha,images2)
-            ImagesServer.cache.expire(fecha,86400)
+            if (noCache == 0)
+                ImagesServer.cache.lpush(fecha,images2)
+                ImagesServer.cache.expire(fecha,86400)
+            end
             
             BuildGrpcObjects.convert_images_to_grpc_obj(images2)
             #https://redis.io/topics/data-types-intro
